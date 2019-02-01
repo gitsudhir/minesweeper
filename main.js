@@ -1,3 +1,4 @@
+console.time("test1");
 var table = []
 var minesPositions = [] // mines position
 var neighbourPositions = [] // neifgbour postion
@@ -35,6 +36,8 @@ function random() {
     }
 
 }
+
+
 
 
 function task() {
@@ -188,3 +191,4 @@ function countMinesN() {
     console.log(cc, 'no of mines available')
     return cc
 }
+console.timeEnd("test1");
