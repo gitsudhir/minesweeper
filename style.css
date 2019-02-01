@@ -1,0 +1,70 @@
+
+.flex-main{
+    display: flex;
+    background: blue;
+    width: 520px;
+    border:2px;
+}
+.flex-main > div{
+    width: 40px;
+    height: 40px;
+    color: #000000;
+    border: 1px solid #43d;
+    margin: 5px;
+    background: #4a2;
+    border-radius: 15px;
+    text-align: center;
+    font-size:30px; 
+}
+
+table{
+width: 520px;
+background: #009;
+}
+td{
+font-size: 26px;
+border: 2px solid #fff;
+border-radius: 20px;
+color: #8ff;
+text-align: center;
+background: black;
+}
+
+#start{
+    background: #ffa;
+    color: #000;
+    border: 6px #fff inset;
+}
+#start:hover{
+    background: #aaa;
+    color: red;
+    border: 6px #fff outset;
+    box-shadow:red 2px 3px; 
+}
+.flex-main > .change{
+    width: 40px;
+    height: 40px;
+    border: 1px solid #43d;
+    margin: 5px;
+    background: #000;
+    border-radius: 15px;
+    color: blue; 
+}
+
+.flex-main > .red{
+    width: 40px;
+    height: 40px;
+    border: 1px solid #43d;
+    margin: 5px;
+    background:red;
+    border-radius: 25px;
+    color: blue; 
+}
+.flex-main > .flag{
+    width: 40px;
+    height: 40px;
+    border: 1px solid #43d;
+    margin: 5px;
+    background-image: url('flag.jpg');
+    
+}
