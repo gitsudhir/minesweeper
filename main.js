@@ -2,11 +2,17 @@ var atPosion =[]
 var table = []
 var minesPositions = [] // mines position
 var neighbourPositions = [] // neifgbour postion
-function random() {
+var totalMines=10
+function main() {
     task()
     start()
     play()
-
+    var clock = setInterval(()=>{
+        document.getElementById('time').innerHTML = parseInt(document.getElementById('time').innerHTML)+ 1 
+    } ,1000)
+    function stop(){
+clearInterval(clock)
+    }
 }
 
 
@@ -211,13 +217,16 @@ function play(){
         for (var aa of a.children) {
             aa.addEventListener('mousedown',(aaa)=>{
                 // console.log(aaa.target)
-                  console.log(aaa.button)
+                 // console.log(aaa.button)
                 if(aaa.button==0){
                    // console.log(aaa)
                     console.log(aaa.target.children[0].innerHTML)
                      if(aaa.target.children[0].innerHTML == 10){
                         if (!aaa.target.hasAttribute('class')) aaa.target.className = 'red'
                          console.log('Game over')
+                         stop()
+                         alert("game over")
+                         window.location.reload() 
                      }else{
                         aaa.target.children[0].removeAttribute('hidden')
                      }
@@ -225,15 +234,23 @@ function play(){
                   
                 
                 if(aaa.button==2){
-                  console.log(( aaa.target.innerHTML))  
-                  
+                 // console.log(( aaa.target.innerHTML))  
+                  if( aaa.target.children[0].innerHTML==10){
+                      totalMines--
+                      if(totalMines==0){alert('congratulation') }
+                  }
                  // console.log('pevent default')
                    // aaa.preventDefault()
-                  if(aaa.target.hasAttribute('class')){aaa.target.removeAttribute('class')}
-                   aaa.target.className='flag'
-
-
+                  if(aaa.target.hasAttribute('class')){
+                    totalMines++  
+                    aaa.target.removeAttribute('class')}
+                  else{ aaa.target.className='flag'}
+                  
+                   document.getElementById('left').innerHTML-= 1
                    
+                   
+
+
                 }
         })
 
