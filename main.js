@@ -56,7 +56,7 @@ function task() {
     //console.log(table)
     //console.log(table)
 
-    //// 10 mines position
+    //// 10 mines position  
     let count = 10
     do {
         var b = {
