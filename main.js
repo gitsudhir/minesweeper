@@ -39,7 +39,7 @@ function start(){
 
             if (minesPositions.indexOf(mines) != -1) {
                     aa.innerHTML = '<span hidden>10</span>'
-                    console.log(aa.innerHTML)
+                   // console.log(aa.innerHTML)
                // if (!aa.hasAttribute('class')) aa.className = 'red'
             }
 
@@ -242,11 +242,13 @@ function play(){
                  // console.log('pevent default')
                    // aaa.preventDefault()
                   if(aaa.target.hasAttribute('class')){
-                    totalMines++  
+                   // totalMines++  
                     aaa.target.removeAttribute('class')}
-                  else{ aaa.target.className='flag'}
+                  else{
+                  //  totalMines++ 
+                       aaa.target.className='flag'}
                   
-                   document.getElementById('left').innerHTML-= 1
+                   document.getElementById('left').innerHTML=totalMines
                    
                    
 
