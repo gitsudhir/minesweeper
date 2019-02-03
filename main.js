@@ -1,10 +1,17 @@
-console.time("test1");
+var atPosion =[]
 var table = []
 var minesPositions = [] // mines position
 var neighbourPositions = [] // neifgbour postion
 function random() {
     task()
-    // console.log('for 4')
+    start()
+    play()
+
+}
+
+
+function start(){
+     // console.log('for 4')
     //neighbour(4)   ////////////////////////////////////////
     // console.log(' for 150')
     // neighbour(150)
@@ -19,14 +26,15 @@ function random() {
             // console.log(a,aa,'p')
       //       aa.innerHTML = mines
             neighbour(mines)
-            aa.innerHTML = countMinesN()
-
-
+           // aa.innerHTML = countMinesN()
+                atPosion[mines]=countMinesN()
+                  aa.innerHTML= '<span hidden>'+atPosion[mines]+'</span>'
 
 
             if (minesPositions.indexOf(mines) != -1) {
-                //    aa.innerHTML = mines
-                if (!aa.hasAttribute('class')) aa.className = 'red'
+                    aa.innerHTML = '<span hidden>10</span>'
+                    console.log(aa.innerHTML)
+               // if (!aa.hasAttribute('class')) aa.className = 'red'
             }
 
 
@@ -34,11 +42,7 @@ function random() {
             mines++
         }
     }
-
 }
-
-
-
 
 function task() {
     console.log('ready-----')
@@ -76,7 +80,7 @@ function task() {
         //  console.log(p,a.row,a.col)
         minesPositions.push(p)
     }
-    console.log(minesPositions, 'mines')
+   //****** console.log(minesPositions, 'mines')
     ///////////// position on grid
 
 
@@ -87,6 +91,14 @@ function task() {
         }
     }
 }
+
+
+
+
+
+
+
+
 
 //neighbour(14)
 
@@ -110,21 +122,21 @@ function neighbour(a) {
         neighbourPositions.push(149);
         neighbourPositions.push(140);
     } else if (topn(a) >= 0) {
-        console.log('from top')
+     //***   console.log('from top')
         neighbourPositions.push(a + 1)
         neighbourPositions.push(a - 1)
         neighbourPositions.push(a + 10)
         neighbourPositions.push(a + 10 + 1)
         neighbourPositions.push(a + 10 - 1)
     } else if (bottum(a) >= 0) {
-        console.log('bottum')
+     //****   console.log('bottum')
         neighbourPositions.push(a - 10)
         neighbourPositions.push(a - 10 + 1)
         neighbourPositions.push(a - 10 - 1)
         neighbourPositions.push(a + 1)
         neighbourPositions.push(a - 1)
     } else if (left(a) >= 0) {
-        console.log('from left')
+     //***   console.log('from left')
         neighbourPositions.push(a - 10)
         neighbourPositions.push(a - 10 + 1)
 
@@ -134,7 +146,7 @@ function neighbour(a) {
         neighbourPositions.push(a + 10 + 1)
 
     } else if (right(a) >= 0) {
-        console.log('from right')
+       // console.log('from right')
         neighbourPositions.push(a - 10)
 
         neighbourPositions.push(a - 10 - 1)
@@ -145,7 +157,7 @@ function neighbour(a) {
         neighbourPositions.push(a + 10 - 1)
 
     } else {
-        console.log('from center')
+       // console.log('from center')
         // center number
         neighbourPositions.push(a - 10)
         neighbourPositions.push(a - 10 + 1)
@@ -156,7 +168,7 @@ function neighbour(a) {
         neighbourPositions.push(a + 10 + 1)
         neighbourPositions.push(a + 10 - 1)
     }
-    console.log(neighbourPositions)
+ //**    console.log(neighbourPositions)
 }
 
 
@@ -188,7 +200,43 @@ function countMinesN() {
             if (aar == anr) cc++
         }
     }
-    console.log(cc, 'no of mines available')
+  //***  console.log(cc, 'no of mines available')
     return cc
 }
-console.timeEnd("test1");
+
+function play(){
+   console.log(minesPositions)
+    var A = document.getElementsByClassName('flex-main')
+    for (var a of A) {
+        for (var aa of a.children) {
+            aa.addEventListener('mousedown',(aaa)=>{
+                // console.log(aaa.target)
+                  console.log(aaa.button)
+                if(aaa.button==0){
+                   // console.log(aaa)
+                    console.log(aaa.target.children[0].innerHTML)
+                     if(aaa.target.children[0].innerHTML == 10){
+                        if (!aaa.target.hasAttribute('class')) aaa.target.className = 'red'
+                         console.log('Game over')
+                     }else{
+                        aaa.target.children[0].removeAttribute('hidden')
+                     }
+                }
+                  
+                
+                if(aaa.button==2){
+                  console.log(( aaa.target.innerHTML))  
+                  
+                 // console.log('pevent default')
+                   // aaa.preventDefault()
+                  if(aaa.target.hasAttribute('class')){aaa.target.removeAttribute('class')}
+                   aaa.target.className='flag'
+
+
+                   
+                }
+        })
+
+    }
+}
+}
