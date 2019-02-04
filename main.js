@@ -229,7 +229,9 @@ function play(){
                          window.location.reload() 
                      }else{
                         aaa.target.children[0].removeAttribute('hidden')
-                        aaa.target.className='change' //////////888888888
+                        aaa.target.className='change' //////////*******
+
+                        
                      }
                 }
                   
